@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 import json
 import os
 
-# --- CONFIGURAZIONE E STILE ---
 st.set_page_config(page_title="Aria Milano Monitor", layout="wide", initial_sidebar_state="expanded")
 
 def apply_custom_style():
@@ -25,7 +24,6 @@ def apply_custom_style():
 
 apply_custom_style()
 
-# --- LOGICA DI CARICAMENTO DATI ---
 @st.cache_data
 def load_environmental_data():
     base_path = os.path.dirname(__file__)
@@ -60,7 +58,6 @@ def load_environmental_data():
 
 df_final = load_environmental_data()
 
-# --- INTERFACCIA UTENTE ---
 st.markdown("# 🌆 Osservatorio Ambientale: **Milano Respira**")
 st.caption("Dieci anni di monitoraggio della qualità dell'aria nella rete AMAT (2016-2025)")
 
@@ -79,7 +76,6 @@ with st.expander("🔬 Cosa respiriamo? Guida agli inquinanti"):
 
 st.divider()
 
-# --- SEZIONE 1: VOLUME DATI ---
 col_stats, col_graph = st.columns([1, 2])
 
 with col_stats:
@@ -95,7 +91,6 @@ with col_graph:
     ax_vol.set_xlabel("Anno di Riferimento")
     st.pyplot(fig_vol)
 
-# --- SEZIONE 2: TREND TEMPORALE ---
 st.divider()
 st.subheader("⏳ Serie Storiche")
 selected_year = st.select_slider("Indica l'anno da esaminare", options=range(2016, 2026), value=2025)
@@ -114,7 +109,6 @@ ax_trend.set_xticklabels(['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago'
 ax_trend.set_title(f"Andamento {selected_gas} nel {selected_year} (medie mensili)", loc='left', fontweight='bold')
 st.pyplot(fig_trend)
 
-# --- SEZIONE 3: RANKING STAZIONI ---
 st.divider()
 st.subheader("🗺️ Dislocazione Territoriale")
 
@@ -144,7 +138,6 @@ with tab2:
     else:
         st.warning("Serie storica non disponibile per questa selezione.")
 
-# --- FOOTER ---
 st.sidebar.image("https://www.comune.milano.it/o/comune-milano-theme/images/logo-comune-milano.svg", width=100)
 st.sidebar.markdown("---")
 st.sidebar.info("🌱 Progetto di data visualization per la sensibilizzazione ambientale sui dati del Comune di Milano.")
