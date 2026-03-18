@@ -122,10 +122,10 @@ ax_trend.set_title(f"Andamento {selected_gas} nel {selected_year} (medie mensili
 st.pyplot(fig_trend)
 
 st.divider()
-st.subheader("🗺️ Dislocazione Territoriale")
+st.subheader("Dislocazione Territoriale")
 
 #analisi territoriale
-tab1, tab2 = st.tabs(["📋 Graduatoria Stazioni", "🎯 Analisi Puntuale"])
+tab1, tab2 = st.tabs(["Graduatoria Stazioni", "Analisi Puntuale"])
 
 #ranking stazioni
 with tab1:
